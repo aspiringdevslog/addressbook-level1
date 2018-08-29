@@ -133,6 +133,12 @@ public class AddressBook {
     private static final String COMMAND_EXIT_DESC = "Exits the program.";
     private static final String COMMAND_EXIT_EXAMPLE = COMMAND_EXIT_WORD;
 
+    //TODO: add a new command as enhancement
+
+    private static final String COMMAND_FAVOURITE_WORD = "fav";
+    private static final String COMMAND_FAVOURITE_DESC = "Make a list of favourite contacts.";
+    private static final String COMMAND_FAVOURITE_EXAMPLE = COMMAND_FAVOURITE_WORD;
+
     private static final String DIVIDER = "===================================================";
 
 
@@ -383,6 +389,8 @@ public class AddressBook {
             return getUsageInfoForAllCommands();
         case COMMAND_EXIT_WORD:
             executeExitProgramRequest();
+        case COMMAND_FAVOURITE_WORD:
+            executeAddFavourites();
         default:
             return getMessageForInvalidCommandInput(commandType, getUsageInfoForAllCommands());
         }
@@ -584,6 +592,18 @@ public class AddressBook {
      */
     private static void executeExitProgramRequest() {
         exitProgram();
+    }
+
+    /**
+     * Add selected contact to favourite.
+     */
+    private static void executeAddFavourites() {
+//TODO: write the logic for add favourites
+        // First get the list of contacts
+        executeListAllPersonsInAddressBook();
+        System.out.println("Enter ID of users that you want to add to favourite, separated by comman - i.e. 1,2,3 ");
+        // next select the contact by index
+        // lastly confirm and add the list to a favourite list, maybe a separate text file
     }
 
     /*
@@ -1134,6 +1154,12 @@ public class AddressBook {
     private static String getUsageInfoForExitCommand() {
         return String.format(MESSAGE_COMMAND_HELP, COMMAND_EXIT_WORD, COMMAND_EXIT_DESC)
                 + String.format(MESSAGE_COMMAND_HELP_EXAMPLE, COMMAND_EXIT_EXAMPLE);
+    }
+
+    /** Returns the string for showing 'fav' command usage instruction */
+    private static String getUsageInfoForFavCommand() {
+        return String.format(MESSAGE_COMMAND_HELP, COMMAND_EXIT_WORD, COMMAND_FAVOURITE_DESC)
+                + String.format(MESSAGE_COMMAND_HELP_EXAMPLE, COMMAND_FAVOURITE_EXAMPLE);
     }
 
 
